@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Time Optimization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+    <header>
+        <button id="theme-toggle"><i class="fa fa-adjust" aria-hidden="true"></i>
+        </button>
+        <nav>
+            <button id="menu-toggle" class="menu-toggle">
+                <span class="menu-icon"><span><i class="fa fa-bars" aria-hidden="true"></i></span></span>
+                <span class="close-icon"><span><i class="fa fa-times" aria-hidden="true"></i>
+                </span></span>
+              </button>
+              
+            <div>
+                
+            </div> 
+            <div class="mobile-menu-sidebar">
+            <ul class="mobile-menu">
+                <li><a class="links" href="#home" onclick="setActiveLink(event, this)">Home</a></li>
+                <li><a class="links" href="#schedule" onclick="setActiveLink(event, this)">Schedule</a></li>
+                <li><a class="links" href="#tasks" onclick="setActiveLink(event, this)">Tasks</a></li>
+                <li><a class="links" href="#about" onclick="setActiveLink(event, this)">About</a></li>
+                <li><a class="links" href="#contact" onclick="setActiveLink(event, this)">Contact</a></li>
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home">
+            <div class="overlay"></div>
+            <div class="container">
+                <h1>Welcome to <span>Study Time</span> Optimization</h1>
+                <p>This application is designed to help you optimize your study time and improve productivity.</p>
+                <a href="#schedule" class="cta">Get Started</a>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <div class="container">
+                <h2>Create Your Study Schedule</h2>
+                <form action="/optimize" method="POST">
+                    <label for="study-input">Enter your study goals and time available:</label>
+                    <textarea id="study-input" name="study" placeholder="Enter your study goals and time available"></textarea>
+                    <button type="submit">Optimize</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="results">
+            <div class="container">
+                <h2>Optimization Results</h2>
+                <p>Your optimized study schedule is as follows:</p>
+                <div class="optimized-schedule">
+                    <!-- Display the optimized schedule here -->
+                </div>
+                <a href="#schedule" class="cta">Optimize Another Schedule</a>
+                <a href="#about" class="back">Back</a>
+            </div>
+        </section>
+
+        <section id="tasks">
+            <div class="container">
+                <h2>Manage Your Tasks</h2>
+                <p>Stay organized and keep track of your study tasks.</p>
+                <ul class="task-list">
+                    <!-- Display the list of tasks here -->
+                </ul>
+                <form class="add-task-form" action="#">
+                    <label for="task-input">Add a new task:</label>
+                    <input type="text" id="task-input" name="task" placeholder="Enter task description" required>
+                    <button type="submit">Add Task</button>
+                </form>
+                <a href="#schedule" class="cta">Go to Schedule</a>
+                <a href="#about" class="back">Back</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About Study Time Optimization</h2>
+                <p>
+                    <div class="article-about">
+                    <article>
+                        <p>Welcome to Study Time Optimization, your ultimate tool for maximizing your study efficiency. In today's fast-paced world, effective time management is crucial for academic success. Our application aims to help students optimize their study schedules, prioritize tasks, and achieve their learning goals.
+                        </p>
+                    </article>        
+                    
+                    <article>
+                        <h4>Our Purpose</h4>
+                        <p>
+                            At Study Time Optimization, we are dedicated to empowering students to make the most of their study time. By providing personalized study schedules and task management features, we aim to enhance productivity, improve focus, and promote effective learning strategies. Our goal is to help students achieve their academic potential and succeed in their educational endeavors.
+                        </p>
+                    </article>
+                </div>
+                    
+                <a href="#home" class="back">Back</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container-form">
+                <div><h2>Contact Us</h2></div>
+                <div>
+                    <form class="form" action="#">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+    
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+    
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Enter Your Message" required></textarea>
+    
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div><a href="#home" class="back">Back</a></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/index.js"></script>
+    <script>
+        // JavaScript code for generating the optimized schedule
+        const scheduleForm = document.querySelector('#schedule form');
+        const optimizedSchedule = document.querySelector('.optimized-schedule');
+
+        scheduleForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Perform optimization calculations and generate the schedule
+            const studyInput = document.querySelector('#study-input').value;
+            // Your optimization logic goes here
+
+            // Dummy schedule generation for demonstration purposes
+            const schedule = [
+                { time: '8:00 AM', task: 'Study topic 1' },
+                { time: '10:00 AM', task: 'Study topic 2' },
+                { time: '1:00 PM', task: 'Study topic 3' },
+                { time: '3:00 PM', task: 'Study topic 4' },
+            ];
+
+            // Generate HTML for the optimized schedule
+            const scheduleHTML = schedule.map((item) => `
+                <div class="schedule-item">
+                    <div class="time">${item.time}</div>
+                    <div class="task">${item.task}</div>
+                </div>
+            `).join('');
+
+            optimizedSchedule.innerHTML = scheduleHTML;
+
+            // Scroll to the results section
+            const resultsSection = document.querySelector('#results');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
