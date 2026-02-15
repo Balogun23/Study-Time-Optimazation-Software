@@ -135,4 +135,4 @@ http://127.0.0.1:8000
 Emmanuel Balogun
 MSc Computing & Data Science
 GitHub: https://github.com/Balogun23
-LinkedIn: (add your LinkedIn)
+LinkedIn: https://www.linkedin.com/in/emmanuel-balogun-59603420a/
